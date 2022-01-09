@@ -3,9 +3,9 @@ import './DynamicForm.css';
 import { IField } from "../../configuration/formScheme";
 import FormField from "../FormField";
 import {
-   Form,
-   Formik,
-   FormikErrors,
+    Form,
+    Formik,
+    FormikErrors,
 } from 'formik';
 
 function DynamicForm({ scheme } : { scheme : { formFields: IField[] } }) {
@@ -13,8 +13,9 @@ function DynamicForm({ scheme } : { scheme : { formFields: IField[] } }) {
        <Formik
          initialValues={ {} }
          onSubmit={(values, actions) => {
-           console.log({ values, actions });
-           actions.setSubmitting(false);
+            console.log('Form data successfully submitted', values);
+
+            actions.setSubmitting(false);
          }}
        >
             {({ errors, touched, validateForm, isValid, dirty }: { errors: FormikErrors<any>, touched: any, validateForm: Function, isValid: Boolean, dirty: Boolean }) => (
@@ -32,7 +33,7 @@ function DynamicForm({ scheme } : { scheme : { formFields: IField[] } }) {
                             );
                         }
                     )}
-                    <button type="submit" disabled={ !(isValid && dirty) }>Submit</button>
+                    <button type="submit" disabled={ !isValid || !dirty }>Submit</button>
                  </Form>
             )}
        </Formik>
