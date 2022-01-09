@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import {formScheme} from "./configuration/formScheme";
+import { formScheme } from "./configuration/formScheme";
+import DynamicForm from './components/DynamicForm';
 
-function App(){
-    const dynamicFormScheme = formScheme
+function App() {
+    const dynamicFormScheme = formScheme;
+
     return (
         <div className="App">
-            This is where the dynamic form should be rendered
+            <DynamicForm scheme={ dynamicFormScheme } />
         </div>
     );
 }
